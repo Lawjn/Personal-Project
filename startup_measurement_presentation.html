@@ -513,6 +513,93 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
+
+        .timeline-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .timeline-image-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-image-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .image-caption {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-weight: bold;
+        }
+
+        .process-visual {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 2rem 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .step-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .step-duration {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
     </style>
 </head>
 <body>
@@ -1010,6 +1097,51 @@
         <div class="slide">
             <div class="slide-counter">9 / 10</div>
             <h2><span class="icon">⏱️</span>Quy trình đo lường từng giai đoạn</h2>
+            
+            <!-- Visual Process Flow -->
+            <div class="process-visual">
+                <div class="process-step">
+                    <div class="step-icon">🔍</div>
+                    <div class="step-title">Problem</div>
+                    <div class="step-duration">Week 1-2</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">💡</div>
+                    <div class="step-title">Solution</div>
+                    <div class="step-duration">Week 3-4</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">📊</div>
+                    <div class="step-title">Market</div>
+                    <div class="step-duration">Week 5-6</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">🚀</div>
+                    <div class="step-title">MVP</div>
+                    <div class="step-duration">Week 7-12</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">🎯</div>
+                    <div class="step-title">PMF</div>
+                    <div class="step-duration">Week 13+</div>
+                </div>
+            </div>
+
+            <!-- Images from external sources -->
+            <div class="timeline-images">
+                <div class="timeline-image-card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Customer Interview" class="timeline-image">
+                    <div class="image-caption">Customer Interviews & Problem Validation</div>
+                </div>
+                <div class="timeline-image-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Market Analysis" class="timeline-image">
+                    <div class="image-caption">Market Analysis & TAM-SAM-SOM</div>
+                </div>
+                <div class="timeline-image-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="MVP Development" class="timeline-image">
+                    <div class="image-caption">MVP Development & Testing</div>
+                </div>
+            </div>
             
             <ol class="validation-steps" style="margin-top: 2rem;">
                 <li><strong>Problem Validation (Tuần 1-2):</strong><br>
