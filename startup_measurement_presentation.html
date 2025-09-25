@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Measure Startup Ideas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide {
+            width: 90%;
+            max-width: 1200px;
+            height: 80%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 60px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .slide h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .slide h2 {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .slide h3 {
+            font-size: 1.8rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slide p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .slide ul {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .slide li {
+            margin-bottom: 0.8rem;
+            color: #666;
+        }
+
+        .highlight {
+            background: #f39c12;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .metric-card {
+            background: #ecf0f1;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .metric-card h4 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .metric-card p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .framework-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s ease;
+        }
+
+        .framework-item:hover {
+            transform: translateY(-5px);
+            border-color: #3498db;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #7f8c8d;
+            text-align: center;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .problem-criteria {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        .criteria-tag {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .validation-steps {
+            counter-reset: step-counter;
+        }
+
+        .validation-steps li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .validation-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #e74c3c;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="slide-counter">1 / 8</div>
+            <h1>How to Measure Startup Ideas</h1>
+            <p class="subtitle">Phương pháp đo lường và đánh giá ý tưởng khởi nghiệp</p>
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="font-size: 1.4rem; color: #3498db; font-weight: bold;">
+                    Từ nghiên cứu Y Combinator, Lean Startup và các framework hàng đầu
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Overview -->
+        <div class="slide">
+            <div class="slide-counter">2 / 8</div>
+            <h2>Tại sao cần đo lường ý tưởng?</h2>
+            <ul style="font-size: 1.4rem; margin-top: 2rem;">
+                <li><span class="highlight">90% startup thất bại</span> do không giải quyết được vấn đề thực tế</li>
+                <li><span class="highlight">70% thất bại</span> do không có product-market fit</li>
+                <li><span class="highlight">42% thất bại</span> do không có nhu cầu thị trường</li>
+            </ul>
+            
+            <div class="metric-card" style="margin-top: 3rem;">
+                <h4>Mục tiêu của việc đo lường:</h4>
+                <p>Xác định ý tưởng có tiềm năng thành công trước khi đầu tư thời gian và tiền bạc</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Problem Quality Measurement -->
+        <div class="slide">
+            <div class="slide-counter">3 / 8</div>
+            <h2>Đo lường chất lượng vấn đề (Problem Quality)</h2>
+            <p style="margin-bottom: 2rem;">Theo Kevin Hale (Y Combinator), vấn đề tốt phải có 6 đặc điểm:</p>
+            
+            <div class="problem-criteria">
+                <div class="criteria-tag">Popular - Phổ biến</div>
+                <div class="criteria-tag">Growing - Đang tăng trưởng</div>
+                <div class="criteria-tag">Urgent - Cấp bách</div>
+                <div class="criteria-tag">Expensive - Tốn kém</div>
+                <div class="criteria-tag">Mandatory - Bắt buộc</div>
+                <div class="criteria-tag">Frequent - Thường xuyên</div>
+            </div>
+
+            <div class="metric-card" style="margin-top: 2rem;">
+                <h4>Cách đo lường:</h4>
+                <p>Cho điểm từ 1-5 cho mỗi tiêu chí. Tổng điểm ≥ 20/30 là tốt, ≥ 25/30 là xuất sắc</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: Market Size Measurement -->
+        <div class="slide">
+            <div class="slide-counter">4 / 8</div>
+            <h2>Đo lường quy mô thị trường (TAM-SAM-SOM)</h2>
+            
+            <div class="framework-grid">
+                <div class="framework-item">
+                    <h4 style="color: #e74c3c; margin-bottom: 1rem;">TAM - Total Addressable Market</h4>
+                    <p><strong>Định nghĩa:</strong> Tổng thị trường có thể</p>
+                    <p><strong>Cách đo:</strong> Số người có vấn đề × Giá họ sẵn sàng trả</p>
+                    <p><strong>Ví dụ:</strong> 100M người × $100 = $10B</p>
+                </div>
+                
+                <div class="framework-item">
+                    <h4 style="color: #f39c12; margin-bottom: 1rem;">SAM - Serviceable Addressable Market</h4>
+                    <p><strong>Định nghĩa:</strong> Thị trường có thể phục vụ</p>
+                    <p><strong>Cách đo:</strong> TAM × % có thể tiếp cận</p>
+                    <p><strong>Ví dụ:</strong> $10B × 10% = $1B</p>
+                </div>
+                
+                <div class="framework-item">
+                    <h4 style="color: #27ae60; margin-bottom: 1rem;">SOM - Serviceable Obtainable Market</h4>
+                    <p><strong>Định nghĩa:</strong> Thị trường có thể giành được</p>
+                    <p><strong>Cách đo:</strong> SAM × % market share thực tế</p>
+                    <p><strong>Ví dụ:</strong> $1B × 1% = $10M</p>
+                </div>
+                
+                <div class="framework-item">
+                    <h4 style="color: #8e44ad; margin-bottom: 1rem;">Tiêu chuẩn đánh giá</h4>
+                    <p><strong>TAM:</strong> ≥ $1B (unicorn potential)</p>
+                    <p><strong>SAM:</strong> ≥ $100M (venture scale)</p>
+                    <p><strong>SOM:</strong> ≥ $10M (viable business)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Customer Validation Metrics -->
+        <div class="slide">
+            <div class="slide-counter">5 / 8</div>
+            <h2>Đo lường Customer Validation</h2>
+            
+            <div class="metric-card">
+                <h4>1. Problem Interview Metrics</h4>
+                <ul>
+                    <li><strong>Problem Recognition Rate:</strong> % người xác nhận có vấn đề (mục tiêu: ≥80%)</li>
+                    <li><strong>Pain Level Score:</strong> Mức độ đau đớn 1-10 (mục tiêu: ≥7/10)</li>
+                    <li><strong>Current Solution Cost:</strong> Chi phí giải pháp hiện tại (mục tiêu: cao)</li>
+                </ul>
+            </div>
+
+            <div class="metric-card">
+                <h4>2. Solution Interview Metrics</h4>
+                <ul>
+                    <li><strong>Solution Fit Score:</strong> % người thấy giải pháp phù hợp (mục tiêu: ≥60%)</li>
+                    <li><strong>Willingness to Pay:</strong> % sẵn sàng trả tiền (mục tiêu: ≥40%)</li>
+                    <li><strong>Price Sensitivity:</strong> Mức giá chấp nhận được</li>
+                </ul>
+            </div>
+
+            <div class="metric-card">
+                <h4>3. Early Adoption Signals</h4>
+                <ul>
+                    <li><strong>Pre-order Rate:</strong> % đặt hàng trước (mục tiêu: ≥10%)</li>
+                    <li><strong>Email Signup Rate:</strong> % đăng ký email (mục tiêu: ≥20%)</li>
+                    <li><strong>Referral Willingness:</strong> % sẵn sàng giới thiệu (mục tiêu: ≥30%)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 6: MVP Testing Metrics -->
+        <div class="slide">
+            <div class="slide-counter">6 / 8</div>
+            <h2>Đo lường MVP Performance</h2>
+            
+            <div class="framework-grid">
+                <div class="framework-item">
+                    <h4 style="color: #3498db;">Engagement Metrics</h4>
+                    <ul style="margin-top: 1rem; font-size: 1rem;">
+                        <li><strong>Daily Active Users (DAU):</strong> Người dùng hàng ngày</li>
+                        <li><strong>Session Duration:</strong> Thời gian sử dụng trung bình</li>
+                        <li><strong>Feature Usage Rate:</strong> % sử dụng tính năng chính</li>
+                        <li><strong>Return Rate:</strong> % quay lại sau lần đầu</li>
+                    </ul>
+                </div>
+                
+                <div class="framework-item">
+                    <h4 style="color: #e74c3c;">Conversion Metrics</h4>
+                    <ul style="margin-top: 1rem; font-size: 1rem;">
+                        <li><strong>Signup Rate:</strong> % đăng ký từ visitor</li>
+                        <li><strong>Activation Rate:</strong> % hoàn thành onboarding</li>
+                        <li><strong>Trial-to-Paid:</strong> % chuyển từ trial sang trả phí</li>
+                        <li><strong>Churn Rate:</strong> % người dùng rời bỏ</li>
+                    </ul>
+                </div>
+                
+                <div class="framework-item">
+                    <h4 style="color: #27ae60;">Financial Metrics</h4>
+                    <ul style="margin-top: 1rem; font-size: 1rem;">
+                        <li><strong>Customer Acquisition Cost (CAC):</strong> Chi phí thu hút khách hàng</li>
+                        <li><strong>Lifetime Value (LTV):</strong> Giá trị khách hàng trọn đời</li>
+                        <li><strong>LTV/CAC Ratio:</strong> Tỷ lệ LTV/CAC (mục tiêu: ≥3:1)</li>
+                        <li><strong>Monthly Recurring Revenue (MRR):</strong> Doanh thu định kỳ</li>
+                    </ul>
+                </div>
+                
+                <div class="framework-item">
+                    <h4 style="color: #f39c12;">Quality Metrics</h4>
+                    <ul style="margin-top: 1rem; font-size: 1rem;">
+                        <li><strong>Net Promoter Score (NPS):</strong> Mức độ giới thiệu (mục tiêu: ≥50)</li>
+                        <li><strong>Customer Satisfaction (CSAT):</strong> Mức độ hài lòng</li>
+                        <li><strong>Support Ticket Rate:</strong> Số lượng yêu cầu hỗ trợ</li>
+                        <li><strong>Bug Report Rate:</strong> Tần suất báo lỗi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Validation Process -->
+        <div class="slide">
+            <div class="slide-counter">7 / 8</div>
+            <h2>Quy trình đo lường từng giai đoạn</h2>
+            
+            <ol class="validation-steps" style="margin-top: 2rem;">
+                <li><strong>Problem Validation (Tuần 1-2):</strong><br>
+                    - 20+ customer interviews<br>
+                    - Problem quality score ≥ 20/30<br>
+                    - 80%+ xác nhận có vấn đề</li>
+                
+                <li><strong>Solution Validation (Tuần 3-4):</strong><br>
+                    - 15+ solution interviews<br>
+                    - 60%+ thấy solution phù hợp<br>
+                    - 40%+ sẵn sàng trả tiền</li>
+                
+                <li><strong>Market Size Validation (Tuần 5-6):</strong><br>
+                    - TAM ≥ $1B<br>
+                    - SAM ≥ $100M<br>
+                    - SOM ≥ $10M</li>
+                
+                <li><strong>MVP Testing (Tuần 7-12):</strong><br>
+                    - 100+ early users<br>
+                    - NPS ≥ 50<br>
+                    - LTV/CAC ≥ 3:1</li>
+                
+                <li><strong>Product-Market Fit (Tuần 13+):</strong><br>
+                    - 40%+ "very disappointed" without product<br>
+                    - Organic growth rate ≥ 20% monthly<br>
+                    - Retention rate ≥ 80% after 1 month</li>
+            </ol>
+        </div>
+
+        <!-- Slide 8: Key Takeaways -->
+        <div class="slide">
+            <div class="slide-counter">8 / 8</div>
+            <h2>Key Takeaways</h2>
+            
+            <div class="metric-card" style="background: #e8f5e8; border-left-color: #27ae60;">
+                <h4 style="color: #27ae60;">✓ Đo lường ngay từ đầu</h4>
+                <p>Không chờ đến khi có sản phẩm mới bắt đầu đo lường</p>
+            </div>
+            
+            <div class="metric-card" style="background: #e8f4f8; border-left-color: #3498db;">
+                <h4 style="color: #3498db;">✓ Tập trung vào leading indicators</h4>
+                <p>Problem quality, customer interviews, early adoption signals</p>
+            </div>
+            
+            <div class="metric-card" style="background: #fef2e8; border-left-color: #f39c12;">
+                <h4 style="color: #f39c12;">✓ Set clear thresholds</h4>
+                <p>Xác định rõ ngưỡng pass/fail cho từng metric</p>
+            </div>
+            
+            <div class="metric-card" style="background: #fce8e8; border-left-color: #e74c3c;">
+                <h4 style="color: #e74c3c;">✓ Pivot based on data</h4>
+                <p>Sẵn sàng thay đổi khi data không đạt ngưỡng mong muốn</p>
+            </div>
+
+            <p style="text-align: center; font-size: 1.5rem; color: #3498db; font-weight: bold; margin-top: 2rem;">
+                "In God we trust, all others bring data" - W. Edwards Deming
+            </p>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">◀ Previous</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next ▶</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            if (direction === 1 && currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            } else if (direction === -1 && currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                changeSlide(1);
+            } else if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
