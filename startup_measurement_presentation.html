@@ -140,32 +140,7 @@
         }
 
         .keyboard-hint {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            z-index: 1000;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .keyboard-hint:hover {
-            opacity: 1;
-        }
-
-        .key-icon {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 3px 8px;
-            border-radius: 5px;
-            margin: 0 3px;
-            font-family: monospace;
-            font-weight: bold;
+            display: none;
         }
 
         .slide-counter {
@@ -1149,11 +1124,6 @@
         </div>
     </div>
 
-    <div class="keyboard-hint">
-        <span class="key-icon">←</span> Previous slide &nbsp;|&nbsp; 
-        <span class="key-icon">→</span> Next slide &nbsp;|&nbsp; 
-        <span class="key-icon">Space</span> Next
-    </div>
 
     <script>
         let currentSlide = 0;
@@ -1234,26 +1204,6 @@
             }
         }
 
-        // Auto-hide keyboard hint after 5 seconds
-        setTimeout(function() {
-            const hint = document.querySelector('.keyboard-hint');
-            if (hint) {
-                hint.style.opacity = '0.3';
-            }
-        }, 5000);
-
-        // Show hint again on first key press
-        let firstKeyPress = true;
-        document.addEventListener('keydown', function() {
-            if (firstKeyPress) {
-                const hint = document.querySelector('.keyboard-hint');
-                if (hint) {
-                    hint.style.opacity = '0.8';
-                    setTimeout(() => hint.style.opacity = '0.3', 2000);
-                }
-                firstKeyPress = false;
-            }
-        });
 
         // Initialize
         showSlide(0);
