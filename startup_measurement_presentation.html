@@ -1127,50 +1127,78 @@
                 </div>
             </div>
 
-            <!-- Images from external sources -->
-            <div class="timeline-images">
-                <div class="timeline-image-card">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Customer Interview" class="timeline-image">
-                    <div class="image-caption">Customer Interviews & Problem Validation</div>
+            <!-- Horizontal Content Layout -->
+            <div class="two-column" style="margin-top: 2rem;">
+                <!-- Left Column: Images -->
+                <div>
+                    <div class="timeline-images">
+                        <div class="timeline-image-card">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Customer Interview" class="timeline-image">
+                            <div class="image-caption">Customer Interviews</div>
+                        </div>
+                        <div class="timeline-image-card">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Market Analysis" class="timeline-image">
+                            <div class="image-caption">Market Analysis</div>
+                        </div>
+                        <div class="timeline-image-card">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="MVP Development" class="timeline-image">
+                            <div class="image-caption">MVP Development</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="timeline-image-card">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Market Analysis" class="timeline-image">
-                    <div class="image-caption">Market Analysis & TAM-SAM-SOM</div>
-                </div>
-                <div class="timeline-image-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="MVP Development" class="timeline-image">
-                    <div class="image-caption">MVP Development & Testing</div>
+
+                <!-- Right Column: Validation Steps -->
+                <div>
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+                        <div class="metric-card" style="padding: 15px;">
+                            <h4 style="color: #e74c3c; margin-bottom: 10px;"><span class="icon">🔍</span>Problem Validation (Tuần 1-2)</h4>
+                            <ul style="font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                <li>20+ customer interviews</li>
+                                <li>Problem quality score ≥ 20/30</li>
+                                <li>80%+ xác nhận có vấn đề</li>
+                            </ul>
+                        </div>
+
+                        <div class="metric-card" style="padding: 15px;">
+                            <h4 style="color: #f39c12; margin-bottom: 10px;"><span class="icon">💡</span>Solution Validation (Tuần 3-4)</h4>
+                            <ul style="font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                <li>15+ solution interviews</li>
+                                <li>60%+ thấy solution phù hợp</li>
+                                <li>40%+ sẵn sàng trả tiền</li>
+                            </ul>
+                        </div>
+
+                        <div class="metric-card" style="padding: 15px;">
+                            <h4 style="color: #3498db; margin-bottom: 10px;"><span class="icon">📊</span>Market Size Validation (Tuần 5-6)</h4>
+                            <ul style="font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                <li>TAM ≥ $1B</li>
+                                <li>SAM ≥ $100M</li>
+                                <li>SOM ≥ $10M</li>
+                            </ul>
+                        </div>
+
+                        <div class="metric-card" style="padding: 15px;">
+                            <h4 style="color: #27ae60; margin-bottom: 10px;"><span class="icon">🚀</span>MVP Testing (Tuần 7-12)</h4>
+                            <ul style="font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                <li>100+ early users</li>
+                                <li>NPS ≥ 50</li>
+                                <li>LTV/CAC ≥ 3:1</li>
+                            </ul>
+                        </div>
+
+                        <div class="metric-card" style="padding: 15px;">
+                            <h4 style="color: #9b59b6; margin-bottom: 10px;"><span class="icon">🎯</span>Product-Market Fit (Tuần 13+)</h4>
+                            <ul style="font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                <li>40%+ "very disappointed" without product</li>
+                                <li>Organic growth rate ≥ 20% monthly</li>
+                                <li>Retention rate ≥ 80% after 1 month</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <ol class="validation-steps" style="margin-top: 2rem;">
-                <li><strong>Problem Validation (Tuần 1-2):</strong><br>
-                    - 20+ customer interviews<br>
-                    - Problem quality score ≥ 20/30<br>
-                    - 80%+ xác nhận có vấn đề</li>
-                
-                <li><strong>Solution Validation (Tuần 3-4):</strong><br>
-                    - 15+ solution interviews<br>
-                    - 60%+ thấy solution phù hợp<br>
-                    - 40%+ sẵn sàng trả tiền</li>
-                
-                <li><strong>Market Size Validation (Tuần 5-6):</strong><br>
-                    - TAM ≥ $1B<br>
-                    - SAM ≥ $100M<br>
-                    - SOM ≥ $10M</li>
-                
-                <li><strong>MVP Testing (Tuần 7-12):</strong><br>
-                    - 100+ early users<br>
-                    - NPS ≥ 50<br>
-                    - LTV/CAC ≥ 3:1</li>
-                
-                <li><strong>Product-Market Fit (Tuần 13+):</strong><br>
-                    - 40%+ "very disappointed" without product<br>
-                    - Organic growth rate ≥ 20% monthly<br>
-                    - Retention rate ≥ 80% after 1 month</li>
-            </ol>
 
-            <div class="case-study" style="margin-top: 2rem;">
+            <div class="case-study" style="margin-top: 1.5rem;">
                 <h4>Timeline Example: WhatsApp (2009-2014)</h4>
                 <div class="metrics">
                     <div class="metric-item">
