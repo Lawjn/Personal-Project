@@ -28,17 +28,18 @@
         }
 
         .slide {
-            width: 90%;
-            max-width: 1200px;
-            height: 80%;
+            width: 95%;
+            max-width: 1400px;
+            height: 85%;
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            padding: 60px;
+            padding: 50px;
             display: none;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             position: relative;
+            overflow-y: auto;
         }
 
         .slide.active {
@@ -229,13 +230,150 @@
             justify-content: center;
             font-weight: bold;
         }
+
+        .case-study {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 5px solid #9b59b6;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .case-study::before {
+            content: "📊";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+        }
+
+        .case-study h4 {
+            color: #8e44ad;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+
+        .case-study .company {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .case-study .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .metric-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .metric-item:hover {
+            border-color: #8e44ad;
+            transform: translateY(-2px);
+        }
+
+        .metric-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #e74c3c;
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        .progress-bar {
+            background: #ecf0f1;
+            height: 8px;
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #3498db;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+            display: block;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .example-box {
+            background: #f8f9fa;
+            border: 2px dashed #3498db;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .example-box h5 {
+            color: #3498db;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 <body>
     <div class="presentation-container">
         <!-- Slide 1: Title -->
         <div class="slide active">
-            <div class="slide-counter">1 / 8</div>
+            <div class="slide-counter">1 / 10</div>
             <h1>How to Measure Startup Ideas</h1>
             <p class="subtitle">Phương pháp đo lường và đánh giá ý tưởng khởi nghiệp</p>
             <div style="text-align: center; margin-top: 3rem;">
@@ -247,66 +385,140 @@
 
         <!-- Slide 2: Overview -->
         <div class="slide">
-            <div class="slide-counter">2 / 8</div>
-            <h2>Tại sao cần đo lường ý tưởng?</h2>
-            <ul style="font-size: 1.4rem; margin-top: 2rem;">
-                <li><span class="highlight">90% startup thất bại</span> do không giải quyết được vấn đề thực tế</li>
-                <li><span class="highlight">70% thất bại</span> do không có product-market fit</li>
-                <li><span class="highlight">42% thất bại</span> do không có nhu cầu thị trường</li>
-            </ul>
+            <div class="slide-counter">2 / 10</div>
+            <h2><span class="icon">📊</span>Tại sao cần đo lường ý tưởng?</h2>
             
-            <div class="metric-card" style="margin-top: 3rem;">
-                <h4>Mục tiêu của việc đo lường:</h4>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">90%</span>
+                    <div class="stat-label">Startup thất bại do không giải quyết vấn đề thực tế</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">70%</span>
+                    <div class="stat-label">Thất bại do không có product-market fit</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">42%</span>
+                    <div class="stat-label">Thất bại do không có nhu cầu thị trường</div>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h4>Case Study: Theranos vs. Dropbox</h4>
+                <div class="two-column">
+                    <div>
+                        <div class="company">❌ Theranos ($945M raised)</div>
+                        <p>• Không validate công nghệ cốt lõi</p>
+                        <p>• Không có proof of concept thực sự</p>
+                        <p>• Bỏ qua feedback từ chuyên gia y tế</p>
+                    </div>
+                    <div>
+                        <div class="company">✅ Dropbox ($1.1B valuation)</div>
+                        <p>• Video demo đơn giản để test demand</p>
+                        <p>• 75,000 signups sau 1 đêm</p>
+                        <p>• Validation trước khi build product</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metric-card" style="margin-top: 2rem;">
+                <h4><span class="icon">🎯</span>Mục tiêu của việc đo lường:</h4>
                 <p>Xác định ý tưởng có tiềm năng thành công trước khi đầu tư thời gian và tiền bạc</p>
             </div>
         </div>
 
         <!-- Slide 3: Problem Quality Measurement -->
         <div class="slide">
-            <div class="slide-counter">3 / 8</div>
-            <h2>Đo lường chất lượng vấn đề (Problem Quality)</h2>
-            <p style="margin-bottom: 2rem;">Theo Kevin Hale (Y Combinator), vấn đề tốt phải có 6 đặc điểm:</p>
+            <div class="slide-counter">3 / 10</div>
+            <h2><span class="icon">🔍</span>Đo lường chất lượng vấn đề (Problem Quality)</h2>
             
-            <div class="problem-criteria">
-                <div class="criteria-tag">Popular - Phổ biến</div>
-                <div class="criteria-tag">Growing - Đang tăng trưởng</div>
-                <div class="criteria-tag">Urgent - Cấp bách</div>
-                <div class="criteria-tag">Expensive - Tốn kém</div>
-                <div class="criteria-tag">Mandatory - Bắt buộc</div>
-                <div class="criteria-tag">Frequent - Thường xuyên</div>
-            </div>
+            <div class="two-column">
+                <div>
+                    <p style="margin-bottom: 2rem;">Theo Kevin Hale (Y Combinator), vấn đề tốt phải có 6 đặc điểm:</p>
+                    
+                    <div class="problem-criteria">
+                        <div class="criteria-tag">Popular - Phổ biến</div>
+                        <div class="criteria-tag">Growing - Đang tăng trưởng</div>
+                        <div class="criteria-tag">Urgent - Cấp bách</div>
+                        <div class="criteria-tag">Expensive - Tốn kém</div>
+                        <div class="criteria-tag">Mandatory - Bắt buộc</div>
+                        <div class="criteria-tag">Frequent - Thường xuyên</div>
+                    </div>
 
-            <div class="metric-card" style="margin-top: 2rem;">
-                <h4>Cách đo lường:</h4>
-                <p>Cho điểm từ 1-5 cho mỗi tiêu chí. Tổng điểm ≥ 20/30 là tốt, ≥ 25/30 là xuất sắc</p>
+                    <div class="metric-card" style="margin-top: 2rem;">
+                        <h4>Cách đo lường:</h4>
+                        <p>Cho điểm từ 1-5 cho mỗi tiêu chí. Tổng điểm ≥ 20/30 là tốt, ≥ 25/30 là xuất sắc</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="case-study">
+                        <h4>Case Study: Uber (2009)</h4>
+                        <div class="company">🚗 Problem: Khó gọi taxi</div>
+                        
+                        <div class="metrics">
+                            <div class="metric-item">
+                                <span class="metric-value">5/5</span>
+                                <span class="metric-label">Popular</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">4/5</span>
+                                <span class="metric-label">Growing</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">4/5</span>
+                                <span class="metric-label">Urgent</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">3/5</span>
+                                <span class="metric-label">Expensive</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">3/5</span>
+                                <span class="metric-label">Mandatory</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">5/5</span>
+                                <span class="metric-label">Frequent</span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px;"><strong>Total Score: 24/30</strong> - Xuất sắc!</p>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Slide 4: Market Size Measurement -->
         <div class="slide">
-            <div class="slide-counter">4 / 8</div>
-            <h2>Đo lường quy mô thị trường (TAM-SAM-SOM)</h2>
+            <div class="slide-counter">4 / 10</div>
+            <h2><span class="icon">📈</span>Đo lường quy mô thị trường (TAM-SAM-SOM)</h2>
             
             <div class="framework-grid">
                 <div class="framework-item">
                     <h4 style="color: #e74c3c; margin-bottom: 1rem;">TAM - Total Addressable Market</h4>
                     <p><strong>Định nghĩa:</strong> Tổng thị trường có thể</p>
                     <p><strong>Cách đo:</strong> Số người có vấn đề × Giá họ sẵn sàng trả</p>
-                    <p><strong>Ví dụ:</strong> 100M người × $100 = $10B</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
                 </div>
                 
                 <div class="framework-item">
                     <h4 style="color: #f39c12; margin-bottom: 1rem;">SAM - Serviceable Addressable Market</h4>
                     <p><strong>Định nghĩa:</strong> Thị trường có thể phục vụ</p>
                     <p><strong>Cách đo:</strong> TAM × % có thể tiếp cận</p>
-                    <p><strong>Ví dụ:</strong> $10B × 10% = $1B</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%;"></div>
+                    </div>
                 </div>
                 
                 <div class="framework-item">
                     <h4 style="color: #27ae60; margin-bottom: 1rem;">SOM - Serviceable Obtainable Market</h4>
                     <p><strong>Định nghĩa:</strong> Thị trường có thể giành được</p>
                     <p><strong>Cách đo:</strong> SAM × % market share thực tế</p>
-                    <p><strong>Ví dụ:</strong> $1B × 1% = $10M</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 20%;"></div>
+                    </div>
                 </div>
                 
                 <div class="framework-item">
@@ -316,93 +528,302 @@
                     <p><strong>SOM:</strong> ≥ $10M (viable business)</p>
                 </div>
             </div>
+
+            <div class="case-study">
+                <h4>Case Study: Airbnb (2008)</h4>
+                <div class="two-column">
+                    <div>
+                        <div class="company">🏠 Market Analysis</div>
+                        <div class="metrics">
+                            <div class="metric-item">
+                                <span class="metric-value">$85B</span>
+                                <span class="metric-label">TAM - Global Hotel Market</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">$13B</span>
+                                <span class="metric-label">SAM - Online Bookings</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">$130M</span>
+                                <span class="metric-label">SOM - Initial Target</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="company">📊 Kết quả thực tế</div>
+                        <p>• <strong>2023 Revenue:</strong> $9.9B</p>
+                        <p>• <strong>Market Cap:</strong> $82B</p>
+                        <p>• <strong>Lesson:</strong> TAM có thể mở rộng khi tạo ra thị trường mới</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Slide 5: Customer Validation Metrics -->
         <div class="slide">
-            <div class="slide-counter">5 / 8</div>
-            <h2>Đo lường Customer Validation</h2>
+            <div class="slide-counter">5 / 10</div>
+            <h2><span class="icon">👥</span>Đo lường Customer Validation</h2>
             
-            <div class="metric-card">
-                <h4>1. Problem Interview Metrics</h4>
-                <ul>
-                    <li><strong>Problem Recognition Rate:</strong> % người xác nhận có vấn đề (mục tiêu: ≥80%)</li>
-                    <li><strong>Pain Level Score:</strong> Mức độ đau đớn 1-10 (mục tiêu: ≥7/10)</li>
-                    <li><strong>Current Solution Cost:</strong> Chi phí giải pháp hiện tại (mục tiêu: cao)</li>
-                </ul>
-            </div>
+            <div class="two-column">
+                <div>
+                    <div class="metric-card">
+                        <h4><span class="icon">🔍</span>1. Problem Interview Metrics</h4>
+                        <ul>
+                            <li><strong>Problem Recognition Rate:</strong> ≥80%</li>
+                            <li><strong>Pain Level Score:</strong> ≥7/10</li>
+                            <li><strong>Current Solution Cost:</strong> Cao</li>
+                        </ul>
+                    </div>
 
-            <div class="metric-card">
-                <h4>2. Solution Interview Metrics</h4>
-                <ul>
-                    <li><strong>Solution Fit Score:</strong> % người thấy giải pháp phù hợp (mục tiêu: ≥60%)</li>
-                    <li><strong>Willingness to Pay:</strong> % sẵn sàng trả tiền (mục tiêu: ≥40%)</li>
-                    <li><strong>Price Sensitivity:</strong> Mức giá chấp nhận được</li>
-                </ul>
-            </div>
+                    <div class="metric-card">
+                        <h4><span class="icon">💡</span>2. Solution Interview Metrics</h4>
+                        <ul>
+                            <li><strong>Solution Fit Score:</strong> ≥60%</li>
+                            <li><strong>Willingness to Pay:</strong> ≥40%</li>
+                            <li><strong>Price Sensitivity:</strong> Acceptable range</li>
+                        </ul>
+                    </div>
 
-            <div class="metric-card">
-                <h4>3. Early Adoption Signals</h4>
-                <ul>
-                    <li><strong>Pre-order Rate:</strong> % đặt hàng trước (mục tiêu: ≥10%)</li>
-                    <li><strong>Email Signup Rate:</strong> % đăng ký email (mục tiêu: ≥20%)</li>
-                    <li><strong>Referral Willingness:</strong> % sẵn sàng giới thiệu (mục tiêu: ≥30%)</li>
-                </ul>
+                    <div class="metric-card">
+                        <h4><span class="icon">🚀</span>3. Early Adoption Signals</h4>
+                        <ul>
+                            <li><strong>Pre-order Rate:</strong> ≥10%</li>
+                            <li><strong>Email Signup Rate:</strong> ≥20%</li>
+                            <li><strong>Referral Willingness:</strong> ≥30%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="case-study">
+                        <h4>Case Study: Buffer (2010)</h4>
+                        <div class="company">📱 Social Media Scheduling Tool</div>
+                        
+                        <div class="example-box">
+                            <h5>Validation Process:</h5>
+                            <p><strong>Step 1:</strong> Landing page với 3 pricing plans</p>
+                            <p><strong>Step 2:</strong> "Coming soon" khi click sign up</p>
+                            <p><strong>Step 3:</strong> Email capture để gauge demand</p>
+                        </div>
+
+                        <div class="metrics">
+                            <div class="metric-item">
+                                <span class="metric-value">100+</span>
+                                <span class="metric-label">Email signups in 7 days</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">85%</span>
+                                <span class="metric-label">Problem recognition</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">$15/month</span>
+                                <span class="metric-label">Acceptable price point</span>
+                            </div>
+                        </div>
+                        
+                        <p style="margin-top: 15px;"><strong>Result:</strong> Built MVP sau khi validate demand</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Slide 6: MVP Testing Metrics -->
+        <!-- Slide 6: Competitive Analysis -->
         <div class="slide">
-            <div class="slide-counter">6 / 8</div>
-            <h2>Đo lường MVP Performance</h2>
+            <div class="slide-counter">6 / 10</div>
+            <h2><span class="icon">⚔️</span>Đo lường Competitive Landscape</h2>
+            
+            <div class="two-column">
+                <div>
+                    <div class="metric-card">
+                        <h4><span class="icon">🔍</span>Competitor Analysis Framework</h4>
+                        <ul>
+                            <li><strong>Direct Competitors:</strong> Cùng solution, cùng target</li>
+                            <li><strong>Indirect Competitors:</strong> Khác solution, cùng problem</li>
+                            <li><strong>Substitute Products:</strong> Alternative approaches</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <h5>Key Metrics to Track:</h5>
+                        <p>• <strong>Market Share:</strong> % thị trường họ chiếm</p>
+                        <p>• <strong>Pricing Strategy:</strong> So sánh giá</p>
+                        <p>• <strong>Feature Gap:</strong> Tính năng họ thiếu</p>
+                        <p>• <strong>Customer Reviews:</strong> Pain points của users</p>
+                        <p>• <strong>Funding/Growth:</strong> Tốc độ phát triển</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="case-study">
+                        <h4>Case Study: Zoom vs. Skype (2011)</h4>
+                        <div class="company">📹 Video Conferencing Market</div>
+                        
+                        <div class="metrics">
+                            <div class="metric-item">
+                                <span class="metric-value">Skype</span>
+                                <span class="metric-label">Incumbent (663M users)</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">Poor</span>
+                                <span class="metric-label">Business meeting quality</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">Complex</span>
+                                <span class="metric-label">Setup process</span>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h5>Zoom's Competitive Advantage:</h5>
+                            <p>• <strong>Better Quality:</strong> HD video, stable connection</p>
+                            <p>• <strong>Easier Setup:</strong> 1-click join meetings</p>
+                            <p>• <strong>Business Focus:</strong> Features for enterprises</p>
+                        </div>
+                        
+                        <p style="margin-top: 15px;"><strong>Result:</strong> $16B valuation trong 9 năm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: MVP Testing Metrics -->
+        <div class="slide">
+            <div class="slide-counter">7 / 10</div>
+            <h2><span class="icon">🚀</span>Đo lường MVP Performance</h2>
             
             <div class="framework-grid">
                 <div class="framework-item">
-                    <h4 style="color: #3498db;">Engagement Metrics</h4>
+                    <h4 style="color: #3498db;"><span class="icon">📊</span>Engagement Metrics</h4>
                     <ul style="margin-top: 1rem; font-size: 1rem;">
                         <li><strong>Daily Active Users (DAU):</strong> Người dùng hàng ngày</li>
-                        <li><strong>Session Duration:</strong> Thời gian sử dụng trung bình</li>
-                        <li><strong>Feature Usage Rate:</strong> % sử dụng tính năng chính</li>
+                        <li><strong>Session Duration:</strong> Thời gian sử dụng TB</li>
+                        <li><strong>Feature Usage Rate:</strong> % dùng tính năng chính</li>
                         <li><strong>Return Rate:</strong> % quay lại sau lần đầu</li>
                     </ul>
                 </div>
                 
                 <div class="framework-item">
-                    <h4 style="color: #e74c3c;">Conversion Metrics</h4>
+                    <h4 style="color: #e74c3c;"><span class="icon">💰</span>Conversion Metrics</h4>
                     <ul style="margin-top: 1rem; font-size: 1rem;">
                         <li><strong>Signup Rate:</strong> % đăng ký từ visitor</li>
                         <li><strong>Activation Rate:</strong> % hoàn thành onboarding</li>
-                        <li><strong>Trial-to-Paid:</strong> % chuyển từ trial sang trả phí</li>
+                        <li><strong>Trial-to-Paid:</strong> % trial → paid</li>
                         <li><strong>Churn Rate:</strong> % người dùng rời bỏ</li>
                     </ul>
                 </div>
                 
                 <div class="framework-item">
-                    <h4 style="color: #27ae60;">Financial Metrics</h4>
+                    <h4 style="color: #27ae60;"><span class="icon">📈</span>Financial Metrics</h4>
                     <ul style="margin-top: 1rem; font-size: 1rem;">
-                        <li><strong>Customer Acquisition Cost (CAC):</strong> Chi phí thu hút khách hàng</li>
-                        <li><strong>Lifetime Value (LTV):</strong> Giá trị khách hàng trọn đời</li>
-                        <li><strong>LTV/CAC Ratio:</strong> Tỷ lệ LTV/CAC (mục tiêu: ≥3:1)</li>
-                        <li><strong>Monthly Recurring Revenue (MRR):</strong> Doanh thu định kỳ</li>
+                        <li><strong>CAC:</strong> Chi phí thu hút khách hàng</li>
+                        <li><strong>LTV:</strong> Giá trị khách hàng trọn đời</li>
+                        <li><strong>LTV/CAC:</strong> ≥3:1</li>
+                        <li><strong>MRR:</strong> Doanh thu định kỳ hàng tháng</li>
                     </ul>
                 </div>
                 
                 <div class="framework-item">
-                    <h4 style="color: #f39c12;">Quality Metrics</h4>
+                    <h4 style="color: #f39c12;"><span class="icon">⭐</span>Quality Metrics</h4>
                     <ul style="margin-top: 1rem; font-size: 1rem;">
-                        <li><strong>Net Promoter Score (NPS):</strong> Mức độ giới thiệu (mục tiêu: ≥50)</li>
-                        <li><strong>Customer Satisfaction (CSAT):</strong> Mức độ hài lòng</li>
-                        <li><strong>Support Ticket Rate:</strong> Số lượng yêu cầu hỗ trợ</li>
-                        <li><strong>Bug Report Rate:</strong> Tần suất báo lỗi</li>
+                        <li><strong>NPS:</strong> ≥50 (Net Promoter Score)</li>
+                        <li><strong>CSAT:</strong> Customer Satisfaction</li>
+                        <li><strong>Support Tickets:</strong> Số lượng yêu cầu hỗ trợ</li>
+                        <li><strong>Bug Reports:</strong> Tần suất báo lỗi</li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h4>Case Study: Instagram MVP (2010)</h4>
+                <div class="two-column">
+                    <div>
+                        <div class="company">📸 Photo Sharing App</div>
+                        <div class="metrics">
+                            <div class="metric-item">
+                                <span class="metric-value">25,000</span>
+                                <span class="metric-label">Downloads in Day 1</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">1M</span>
+                                <span class="metric-label">Users in 2 months</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="company">🎯 Key MVP Metrics</div>
+                        <p>• <strong>Core Feature:</strong> Photo + Filter + Share</p>
+                        <p>• <strong>Engagement:</strong> 70% daily usage rate</p>
+                        <p>• <strong>Growth:</strong> 100% organic/viral</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 7: Validation Process -->
+        <!-- Slide 8: Product-Market Fit -->
         <div class="slide">
-            <div class="slide-counter">7 / 8</div>
-            <h2>Quy trình đo lường từng giai đoạn</h2>
+            <div class="slide-counter">8 / 10</div>
+            <h2><span class="icon">🎯</span>Đo lường Product-Market Fit</h2>
+            
+            <div class="two-column">
+                <div>
+                    <div class="metric-card">
+                        <h4><span class="icon">📊</span>Sean Ellis Test</h4>
+                        <p style="margin-bottom: 1rem;">"How would you feel if you could no longer use this product?"</p>
+                        <ul>
+                            <li><strong>≥40% "Very disappointed"</strong> = Strong PMF</li>
+                            <li><strong>25-40%</strong> = On the right track</li>
+                            <li><strong><25%</strong> = Need to pivot</li>
+                        </ul>
+                    </div>
+
+                    <div class="metric-card">
+                        <h4><span class="icon">🚀</span>Growth Metrics</h4>
+                        <ul>
+                            <li><strong>Organic Growth:</strong> ≥20% monthly</li>
+                            <li><strong>Retention Rate:</strong> ≥80% after 1 month</li>
+                            <li><strong>Viral Coefficient:</strong> ≥0.5</li>
+                            <li><strong>NPS Score:</strong> ≥50</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="case-study">
+                        <h4>Case Study: Slack (2013)</h4>
+                        <div class="company">💬 Team Communication Tool</div>
+                        
+                        <div class="example-box">
+                            <h5>PMF Journey:</h5>
+                            <p><strong>Pre-PMF (2013):</strong> Gaming company internal tool</p>
+                            <p><strong>Pivot (2014):</strong> Focus on team communication</p>
+                            <p><strong>PMF Achieved:</strong> Strong user engagement</p>
+                        </div>
+
+                        <div class="metrics">
+                            <div class="metric-item">
+                                <span class="metric-value">93%</span>
+                                <span class="metric-label">Daily active users</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">10hr</span>
+                                <span class="metric-label">Average daily usage</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">$7.1B</span>
+                                <span class="metric-label">Valuation in 2021</span>
+                            </div>
+                        </div>
+                        
+                        <p style="margin-top: 15px;"><strong>Key:</strong> Users couldn't imagine working without it</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Validation Process Timeline -->
+        <div class="slide">
+            <div class="slide-counter">9 / 10</div>
+            <h2><span class="icon">⏱️</span>Quy trình đo lường từng giai đoạn</h2>
             
             <ol class="validation-steps" style="margin-top: 2rem;">
                 <li><strong>Problem Validation (Tuần 1-2):</strong><br>
@@ -430,34 +851,88 @@
                     - Organic growth rate ≥ 20% monthly<br>
                     - Retention rate ≥ 80% after 1 month</li>
             </ol>
+
+            <div class="case-study" style="margin-top: 2rem;">
+                <h4>Timeline Example: WhatsApp (2009-2014)</h4>
+                <div class="metrics">
+                    <div class="metric-item">
+                        <span class="metric-value">2009</span>
+                        <span class="metric-label">Problem validation</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">2010</span>
+                        <span class="metric-label">MVP launch</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">2012</span>
+                        <span class="metric-label">Product-Market Fit</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">2014</span>
+                        <span class="metric-label">$19B acquisition</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Slide 8: Key Takeaways -->
+        <!-- Slide 10: Key Takeaways -->
         <div class="slide">
-            <div class="slide-counter">8 / 8</div>
-            <h2>Key Takeaways</h2>
+            <div class="slide-counter">10 / 10</div>
+            <h2><span class="icon">🎯</span>Key Takeaways & Action Items</h2>
             
-            <div class="metric-card" style="background: #e8f5e8; border-left-color: #27ae60;">
-                <h4 style="color: #27ae60;">✓ Đo lường ngay từ đầu</h4>
-                <p>Không chờ đến khi có sản phẩm mới bắt đầu đo lường</p>
-            </div>
-            
-            <div class="metric-card" style="background: #e8f4f8; border-left-color: #3498db;">
-                <h4 style="color: #3498db;">✓ Tập trung vào leading indicators</h4>
-                <p>Problem quality, customer interviews, early adoption signals</p>
-            </div>
-            
-            <div class="metric-card" style="background: #fef2e8; border-left-color: #f39c12;">
-                <h4 style="color: #f39c12;">✓ Set clear thresholds</h4>
-                <p>Xác định rõ ngưỡng pass/fail cho từng metric</p>
-            </div>
-            
-            <div class="metric-card" style="background: #fce8e8; border-left-color: #e74c3c;">
-                <h4 style="color: #e74c3c;">✓ Pivot based on data</h4>
-                <p>Sẵn sàng thay đổi khi data không đạt ngưỡng mong muốn</p>
+            <div class="two-column">
+                <div>
+                    <div class="metric-card" style="background: #e8f5e8; border-left-color: #27ae60;">
+                        <h4 style="color: #27ae60;"><span class="icon">⚡</span>Đo lường ngay từ đầu</h4>
+                        <p>Không chờ đến khi có sản phẩm mới bắt đầu đo lường</p>
+                    </div>
+                    
+                    <div class="metric-card" style="background: #e8f4f8; border-left-color: #3498db;">
+                        <h4 style="color: #3498db;"><span class="icon">📊</span>Tập trung vào leading indicators</h4>
+                        <p>Problem quality, customer interviews, early adoption signals</p>
+                    </div>
+                    
+                    <div class="metric-card" style="background: #fef2e8; border-left-color: #f39c12;">
+                        <h4 style="color: #f39c12;"><span class="icon">🎯</span>Set clear thresholds</h4>
+                        <p>Xác định rõ ngưỡng pass/fail cho từng metric</p>
+                    </div>
+                    
+                    <div class="metric-card" style="background: #fce8e8; border-left-color: #e74c3c;">
+                        <h4 style="color: #e74c3c;"><span class="icon">🔄</span>Pivot based on data</h4>
+                        <p>Sẵn sàng thay đổi khi data không đạt ngưỡng mong muốn</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="case-study">
+                        <h4>Measurement Checklist</h4>
+                        <div class="company">✅ Next Steps</div>
+                        
+                        <div class="example-box">
+                            <h5>Week 1-2: Problem Validation</h5>
+                            <p>□ Conduct 20+ customer interviews</p>
+                            <p>□ Score problem quality (aim for ≥20/30)</p>
+                            <p>□ Validate 80%+ problem recognition</p>
+                        </div>
+
+                        <div class="example-box">
+                            <h5>Week 3-4: Solution Validation</h5>
+                            <p>□ Test solution with 15+ prospects</p>
+                            <p>□ Achieve 60%+ solution fit score</p>
+                            <p>□ Validate 40%+ willingness to pay</p>
+                        </div>
+
+                        <div class="example-box">
+                            <h5>Week 5+: Build & Measure</h5>
+                            <p>□ Calculate TAM-SAM-SOM</p>
+                            <p>□ Build and test MVP</p>
+                            <p>□ Track key metrics continuously</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <p style="text-align: center; font-size: 1.5rem; color: #3498db; font-weight: bold; margin-top: 2rem;">
+            <p style="text-align: center; font-size: 1.5rem; color: #3498db; font-weight: bold; margin-top: 2rem; font-style: italic;">
                 "In God we trust, all others bring data" - W. Edwards Deming
             </p>
         </div>
