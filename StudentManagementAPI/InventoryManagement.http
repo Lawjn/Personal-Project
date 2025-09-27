@@ -1,0 +1,197 @@
+### API Testing for Inventory Management System - Flow 2
+### Tính năng tồn kho và bán hàng
+
+@baseUrl = https://localhost:7000
+# @baseUrl = http://localhost:5000
+
+### 1. Tạo danh mục xe (VehicleModel)
+POST {{baseUrl}}/api/VehicleModel
+Content-Type: application/json
+
+{
+  "name": "Honda Wave Alpha 110cc",
+  "brand": "Honda",
+  "color": "Đỏ",
+  "price": 20500000
+}
+
+###
+POST {{baseUrl}}/api/VehicleModel
+Content-Type: application/json
+
+{
+  "name": "Yamaha Exciter 155cc",
+  "brand": "Yamaha", 
+  "color": "Xanh",
+  "price": 47000000
+}
+
+###
+POST {{baseUrl}}/api/VehicleModel
+Content-Type: application/json
+
+{
+  "name": "SYM Galaxy 50cc",
+  "brand": "SYM",
+  "color": "Trắng",
+  "price": 16500000
+}
+
+### 2. Xem danh sách xe
+GET {{baseUrl}}/api/VehicleModel
+
+### 3. Xem danh sách xe với thông tin tồn kho
+GET {{baseUrl}}/api/VehicleModel/with-inventory
+
+### 4. Nhập kho (Inventory)
+POST {{baseUrl}}/api/Inventory
+Content-Type: application/json
+
+{
+  "vehicleModelId": 1,
+  "quantity": 50,
+  "unitPrice": 19500000,
+  "notes": "Lô hàng đầu tháng 9"
+}
+
+###
+POST {{baseUrl}}/api/Inventory
+Content-Type: application/json
+
+{
+  "vehicleModelId": 2,
+  "quantity": 30,
+  "unitPrice": 45500000,
+  "notes": "Xe mới về từ đại lý"
+}
+
+###
+POST {{baseUrl}}/api/Inventory
+Content-Type: application/json
+
+{
+  "vehicleModelId": 3,
+  "quantity": 25,
+  "unitPrice": 15800000,
+  "notes": "Hàng tồn kho tháng trước"
+}
+
+### 5. Xem tồn kho
+GET {{baseUrl}}/api/Inventory
+
+### 6. Xem tồn kho sắp hết (dưới 10 chiếc)
+GET {{baseUrl}}/api/Inventory/low-stock/10
+
+### 7. Bán hàng từ tồn kho
+POST {{baseUrl}}/api/SellFromInventory
+Content-Type: application/json
+
+{
+  "inventoryId": 1,
+  "quantitySold": 5,
+  "sellPrice": 20500000,
+  "customerName": "Nguyễn Văn A",
+  "customerPhone": "0901234567",
+  "notes": "Khách hàng mua trả góp"
+}
+
+###
+POST {{baseUrl}}/api/SellFromInventory
+Content-Type: application/json
+
+{
+  "inventoryId": 2,
+  "quantitySold": 3,
+  "sellPrice": 47000000,
+  "customerName": "Trần Thị B",
+  "customerPhone": "0987654321",
+  "notes": "Thanh toán tiền mặt"
+}
+
+###
+POST {{baseUrl}}/api/SellFromInventory
+Content-Type: application/json
+
+{
+  "inventoryId": 1,
+  "quantitySold": 2,
+  "sellPrice": 20300000,
+  "customerName": "Lê Văn C",
+  "customerPhone": "0912345678",
+  "notes": "Giảm giá cho khách quen"
+}
+
+### 8. Xem lịch sử bán hàng
+GET {{baseUrl}}/api/SellFromInventory
+
+### 9. Xem tóm tắt doanh số (30 ngày qua)
+GET {{baseUrl}}/api/SellFromInventory/sales-summary
+
+### 10. Xem tóm tắt doanh số theo khoảng thời gian
+GET {{baseUrl}}/api/SellFromInventory/sales-summary?fromDate=2025-09-01&toDate=2025-09-30
+
+### 11. Xem xe bán chạy nhất
+GET {{baseUrl}}/api/SellFromInventory/top-selling?limit=5
+
+### 12. Tạo báo cáo doanh số
+POST {{baseUrl}}/api/Reports/generate-sales-report
+Content-Type: application/json
+
+{
+  "fromDate": "2025-09-01T00:00:00",
+  "toDate": "2025-09-30T23:59:59",
+  "createdBy": "Admin"
+}
+
+### 13. Tạo dự báo cho Honda Wave Alpha
+POST {{baseUrl}}/api/Reports/generate-forecast
+Content-Type: application/json
+
+{
+  "vehicleModelId": 1,
+  "forecastDate": "2025-10-01T00:00:00",
+  "forecastDays": 30,
+  "historicalDays": 90
+}
+
+### 14. Xem lịch sử báo cáo
+GET {{baseUrl}}/api/Reports/report-logs
+
+### 15. Xem danh sách dự báo
+GET {{baseUrl}}/api/Reports/forecasts
+
+### 16. Xem dự báo cho xe cụ thể
+GET {{baseUrl}}/api/Reports/forecasts?vehicleModelId=1
+
+### 17. Xem tình trạng tồn kho tổng quan
+GET {{baseUrl}}/api/Reports/inventory-status
+
+### 18. Nhập thêm hàng vào tồn kho hiện tại
+POST {{baseUrl}}/api/Inventory
+Content-Type: application/json
+
+{
+  "vehicleModelId": 1,
+  "quantity": 20,
+  "unitPrice": 19800000,
+  "notes": "Nhập bổ sung do bán chạy"
+}
+
+### 19. Cập nhật thông tin tồn kho
+PUT {{baseUrl}}/api/Inventory/1
+Content-Type: application/json
+
+{
+  "quantity": 60,
+  "unitPrice": 19700000,
+  "notes": "Điều chỉnh giá và số lượng"
+}
+
+### 20. Hủy đơn bán hàng (khôi phục tồn kho)
+DELETE {{baseUrl}}/api/SellFromInventory/1
+
+### 21. Xem chi tiết một giao dịch bán hàng
+GET {{baseUrl}}/api/SellFromInventory/2
+
+### 22. Xem chi tiết một mục tồn kho
+GET {{baseUrl}}/api/Inventory/1
